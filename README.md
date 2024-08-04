@@ -3,7 +3,7 @@ THANKS TO HIM 😀
 
 # Decrypt Chrome Passwords 🗝
 This program scan your browser's files to get the browser history and the passwords saved <br>
-This program works with the following browsers: **Opera, Firefox (actually doesn't work, because it's not based on Chromium), Brave, Edge and Chrome,** but you can add other browsers using the *Browsers* dictionary in the code (*line 142*). Just put the browser name and path to the *User Data* folder (may be called differently) <br>
+This program works with the following browsers: **Opera, ~~Firefox~~ (actually doesn't work, because it's not based on Chromium), Brave, Edge and Chrome,** but you can add other browsers using the *Browsers* dictionary in the code (*line 142*). Just put the browser name and path to the *User Data* folder (may be called differently) <br>
 This code has only been tested on windows, so it may not work on other OS.<br>
 If you have an idea for improvement, do let me know!<br>
 
