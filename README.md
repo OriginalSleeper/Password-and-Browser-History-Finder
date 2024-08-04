@@ -1,6 +1,9 @@
+BASED ON THE YICONG'S TUTORIAL : TO SEE IT [Click here](https://ohyicong.medium.com/how-to-hack-chrome-password-with-python-1bedc167be3d)
+THANKS TO HIM 😀
+
 # Decrypt Chrome Passwords 🗝
 This program scan your browser's files to get the browser history and the passwords saved <br>
-This program works with the following browsers: **Opera, Firefox, Brave, Edge and Chrome,** but you can add other browsers using the *Browsers* dictionary in the code (*line 142*). Just put the browser name and path to the *User Data* folder (may be called differently) <br>
+This program works with the following browsers: **Opera, Firefox (actually doesn't work, because it's not based on Chromium), Brave, Edge and Chrome,** but you can add other browsers using the *Browsers* dictionary in the code (*line 142*). Just put the browser name and path to the *User Data* folder (may be called differently) <br>
 This code has only been tested on windows, so it may not work on other OS.<br>
 If you have an idea for improvement, do let me know!<br>
 
@@ -18,7 +21,7 @@ Or install manually :
 - **pywin32** with pip : ```pip install pywin32```
 
 ## Usage 📖
-You can run in the terminal :
+You can run it on the terminal :
 **⚠** Depending on how you installed Python, it can be : **⚠**
 ```python finder.py```
 ```python.exe finder.py```
@@ -28,7 +31,7 @@ You can run in the terminal :
 Saved in many files like: **history<*BROWSER_NAME*>.txt** or **passwords<*BROWSER_NAME*>.txt**
 
 ## How it works ? 🤔
-To understand the how this program works, read ***ohyicong***'s medium article. <br>
+To understand the how this program works, read ***yicong***'s Medium article. <br>
 [Click here](https://ohyicong.medium.com/how-to-hack-chrome-password-with-python-1bedc167be3d)
 
 
