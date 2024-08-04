@@ -1,5 +1,6 @@
-BASED ON THE YICONG'S TUTORIAL : TO SEE IT [Click here](https://ohyicong.medium.com/how-to-hack-chrome-password-with-python-1bedc167be3d)
+BASED ON THE YICONG'S TUTORIAL : TO SEE IT [Click here](https://ohyicong.medium.com/how-to-hack-chrome-password-with-python-1bedc167be3d) <br>
 THANKS TO HIM 😀
+AND LIMERBOY'S PASSWORDS STEALER (on Firefox) : TO SEE IT [Cick Here](https://github.com/LimerBoy/FireFox-Thief)
 
 # Decrypt Chrome Passwords 🗝
 This program scan your browser's files to get the browser history and the passwords saved <br>
