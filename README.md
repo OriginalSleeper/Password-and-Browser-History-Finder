@@ -6,7 +6,7 @@ If you have an idea for improvement, do let me know!<br>
 
 ## OS support 💻
 - Windows
-- (Others haven't been tested, but let me know if they work)
+- (Others can work if you change filepath format)
 
 ##
 ## Dependencies (see requirements.txt)
