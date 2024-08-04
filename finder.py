@@ -1,4 +1,4 @@
-# Credits to LimerBoy (https://github.com/LimerBoy/FireFox-Thief) and Yicong's Tutorial (https://ohyicong.medium.com/how-to-hack-chrome-password-with-python-1bedc167be3d) & OriginalSleeper
+# Credits to Yicong's Tutorial (https://ohyicong.medium.com/how-to-hack-chrome-password-with-python-1bedc167be3d) & OriginalSleeper
 # --------------------------- CODE REDUCTION IS IN PROGRESS --------------------------
 import os
 import re
